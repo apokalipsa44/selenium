@@ -33,5 +33,32 @@ public class Test1 {
 
     }
 
+    @Test
+    public void logoSearch(){
+//        webDriver.findElement(By.xpath("//img[contians(src,'logo-topbar')]"));
+        webDriver.findElement(By.xpath("//div[@id='Logo']//img"));
+    }
+
+    @Test
+    public void signInSearch(){
+        webDriver.findElement(By.xpath("//div[@id='MenuContent']//a[.='Sign In']"));
+    }
+
+    @Test
+    public void mainParrotSearch(){
+        webDriver.findElement(By.cssSelector("div#MainImage"));
+    }
+
+    @Test
+    public void mainParrotSearchForCats(){
+        webDriver.findElement(By.xpath("//area[@alt='Cats']"));
+    }
+
+    @Test
+    public void inputField(){
+        webDriver.findElement(By.cssSelector("input[name=keyword]"));
+    }
+
+
 
 }
