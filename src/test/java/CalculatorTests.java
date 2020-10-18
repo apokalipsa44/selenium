@@ -13,7 +13,7 @@ public class CalculatorTests {
     private int secondVal = 5;
 
 
-    //ecpected data
+    //expected data
     private int correctExpectedValue = 10;
     private int wrongExpectedValue = 102;
 
