@@ -1,3 +1,4 @@
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ public class Test1 {
     public void setupDriver() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         webDriver = new ChromeDriver();
+        webDriver.navigate().to("http://przyklady.javastart.pl/jpetstore/");
+        webDriver.findElement(By.linkText("Enter the Store")).click();
     }
 
     @AfterEach
@@ -21,11 +24,11 @@ public class Test1 {
         webDriver.quit();
     }
 
+    @SneakyThrows
     @Test
     public void test1() {
-
-        webDriver.navigate().to("http://przyklady.javastart.pl/jpetstore/");
-        webDriver.findElement(By.linkText("Enter the Store")).click();
+        webDriver.findElement(By.name("img_cart")).click();
+        Thread.sleep(1000);
 
 
     }
