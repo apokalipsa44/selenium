@@ -59,6 +59,14 @@ public class Test1 {
         webDriver.findElement(By.cssSelector("input[name=keyword]"));
     }
 
+    @Test
+    public void linkAtTheEndWithXpath(){
+        webDriver.findElement(By.xpath("div[@id='PoweredBy']/a"));
+    }
 
+    @Test
+    public void linkAtTheEndWithCss(){
+        webDriver.findElement(By.cssSelector("div#PoweredBy>a"));
+    }
 
 }
