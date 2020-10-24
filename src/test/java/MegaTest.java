@@ -49,6 +49,16 @@ public class MegaTest {
 
     }
 
+    @Test
+    public  void uploadTest(){
+        webDriver.navigate().to("http://theinternet.przyklady.javastart.pl/upload");
+        webDriver.findElement(By.id("file-upload")).sendKeys("C:/Users/m_lac/OneDrive/Dokumenty/selenium/.gitignore");
+        webDriver.findElement(By.id("file-submit")).click();
+
+        String uploadedFileName = webDriver.findElement(By.id("uploaded-files")).getText();
+        sleep();
+        Assertions.assertEquals(".gitignore", uploadedFileName);
+    }
 
 
     @AfterEach
