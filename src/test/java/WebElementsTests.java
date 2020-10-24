@@ -42,6 +42,20 @@ public class WebElementsTests {
     }
 
     @Test
+    public void petTypeListTest(){
+        WebElement element;
+        Select petTypeSelector=new Select(webDriver.findElement(By.name("account.favouriteCategoryId")));
+        petTypeSelector.selectByIndex(1);
+        sleep();
+        petTypeSelector.selectByVisibleText("FISH");
+        sleep();
+        petTypeSelector.selectByValue("CATS");
+        sleep();
+        String selectedPet = petTypeSelector.getFirstSelectedOption().getText();
+        Assertions.assertEquals("CATS", selectedPet);
+    }
+
+    @Test
     public void dropdownListOptionsTest() {
         Select languageDropdown = new Select(webDriver.findElement(By.name("account.languagePreference")));
         List<WebElement> options = languageDropdown.getOptions();
