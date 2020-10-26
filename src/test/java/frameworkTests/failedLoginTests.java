@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class failedLoginTests {
 
@@ -32,6 +33,7 @@ public class failedLoginTests {
         headerPage.signInToTheStore();
 
         LoginPage loginPage=new LoginPage(webDriver);
+        PageFactory.initElements(webDriver,loginPage);
         loginPage.typeUsername("gucio");
         loginPage.typePassword("guciopass");
         loginPage.submitLoginForm();

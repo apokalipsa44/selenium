@@ -3,30 +3,40 @@ package frameworkTests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
     WebDriver webDriver;
+
+    @FindBy(name="username")
+    private WebElement usernameInputField;
+
+    @FindBy(name="password")
+    private WebElement passwordInputField;
+
+    @FindBy(name="signon")
+    private WebElement loginButton;
 
     public LoginPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
     public void typeUsername(String username){
-        WebElement usernameInputField = webDriver.findElement(By.cssSelector("input[name='username']"));
+        usernameInputField.clear();
         usernameInputField.sendKeys(username);
     }
 
     public void typePassword(String password){
-        WebElement usernameInputField = webDriver.findElement(By.cssSelector("input[name='password']"));
-        usernameInputField.sendKeys(password);
+        passwordInputField.sendKeys(password);
     }
 
     public void submitLoginForm(){
-        WebElement loginButton = webDriver.findElement(By.cssSelector("input[name='signon']"));
+
         loginButton.click();
     }
 
     public String getFailedLoginMessage(){
+                                                                            // "#Content ul[class='messages'] li"
         WebElement failedLoginMessage = webDriver.findElement(By.cssSelector("ul.messages>li"));
         return failedLoginMessage.getText();
     }
