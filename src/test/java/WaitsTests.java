@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -58,9 +59,9 @@ public class WaitsTests {
     @Test
     public void dynamicLoadingTest() {
         webDriver.navigate().to("http://theinternet.przyklady.javastart.pl/dynamic_loading/1");
-                                                                    //  css selector (#start > button)
+        //  css selector (#start > button)
         WebElement startButton = webDriver.findElement(By.xpath("//div[@id='start']//button[text()='Start']"));
-                                                                    // css selector (#finish > h4)
+        // css selector (#finish > h4)
         WebElement helloWorldTitle = webDriver.findElement(By.xpath("//div[@id='finish']//h4[.='Hello World!']"));
         FluentWait<WebDriver> wait = new FluentWait<WebDriver>(webDriver);
         startButton.click();
@@ -68,8 +69,26 @@ public class WaitsTests {
                 .pollingEvery(Duration.ofMillis(250))
                 .withTimeout(Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOf(helloWorldTitle));
-Assertions.assertTrue(helloWorldTitle.isDisplayed());
+        Assertions.assertTrue(helloWorldTitle.isDisplayed());
 
+    }
+
+
+    @Test
+    public void dynamicLoadingTest2(){
+        webDriver.navigate().to("http://theinternet.przyklady.javastart.pl/dynamic_loading/2");
+        //  css selector (#start > button)
+        WebElement startButton = webDriver.findElement(By.xpath("//div[@id='start']//button[text()='Start']"));
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(webDriver);
+        startButton.click();
+        wait
+                .pollingEvery(Duration.ofMillis(250))
+                .withTimeout(Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class)
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#finish h4")));
+
+        WebElement helloWorldTitle = webDriver.findElement(By.xpath("//div[@id='finish']//h4[.='Hello World!']"));
+        Assertions.assertTrue(helloWorldTitle.isDisplayed());
     }
 
 
