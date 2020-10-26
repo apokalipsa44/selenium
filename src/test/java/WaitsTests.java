@@ -27,29 +27,17 @@ public class WaitsTests {
 
     @Test
     public void checkboxVisibilityTest(){
-//        WebElement removeButton = webDriver.findElement(By.id("btn"));
-//        WebElement checkbox = webDriver.findElement(By.id("checkbox"));
-//        System.out.println(checkbox.isDisplayed());
-//        removeButton.click();
-//        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 15);
-//        WebElement message = webDriver.findElement(By.id("message"));
-//        webDriverWait.until(ExpectedConditions.visibilityOf(message));
-//        Assertions.assertEquals(message.getText(), "It's gone!");
-
+        WebElement removeButton = webDriver.findElement(By.id("btn"));
         WebElement checkbox = webDriver.findElement(By.id("checkbox"));
 
-        Assertions.assertTrue(checkbox.isDisplayed());
-        Assertions.assertFalse(checkbox.isSelected());
+        System.out.println(checkbox.isDisplayed());
 
-        WebElement removeButton = webDriver.findElement(By.id("btn"));
         removeButton.click();
-
-        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 15);
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 4);
         webDriverWait.until(ExpectedConditions.invisibilityOf(checkbox));
 
-        WebElement messageLabel = webDriver.findElement(By.id("message"));
-        Assertions.assertEquals(messageLabel.getText(), "It's gone!");
-
+        WebElement message = webDriver.findElement(By.id("message"));
+        Assertions.assertEquals(message.getText(), "It's gone!");
     }
 
     @AfterEach
