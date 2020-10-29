@@ -13,7 +13,7 @@ public class failedLoginTests {
     WebDriver webDriver;
 
     // provided
-    private String failedLoginMessageProvided="Invalid username or password. Signon failed.";
+    private String failedLoginMessageProvided = "Invalid username or password. Signon failed.";
 
 
     @BeforeEach
@@ -25,15 +25,17 @@ public class failedLoginTests {
 
 
     @Test
-    public void userTryToLoginWithBadCredencials(){
-        LandingPage landingPage=new LandingPage(webDriver);
+    public void userTryToLoginWithBadCredencials() {
+        LandingPage landingPage = new LandingPage(webDriver);
+        PageFactory.initElements(webDriver, landingPage);
         landingPage.enterToTheStore();
 
-        HeaderPage headerPage=new HeaderPage(webDriver);
+        HeaderPage headerPage = new HeaderPage(webDriver);
+        PageFactory.initElements(webDriver, headerPage);
         headerPage.signInToTheStore();
 
-        LoginPage loginPage=new LoginPage(webDriver);
-        PageFactory.initElements(webDriver,loginPage);
+        LoginPage loginPage = new LoginPage(webDriver);
+        PageFactory.initElements(webDriver, loginPage);
         loginPage.typeUsername("gucio");
         loginPage.typePassword("guciopass");
         loginPage.submitLoginForm();
