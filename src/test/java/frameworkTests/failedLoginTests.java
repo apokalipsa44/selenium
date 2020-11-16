@@ -27,7 +27,8 @@ public class failedLoginTests {
     @Test
     public void userTryToLoginWithBadCredencials() {
         LandingPage landingPage = new LandingPage(webDriver);
-        PageFactory.initElements(webDriver, landingPage);
+//        PageFactory.initElements(webDriver, landingPage);//<---------------- init elements!!!
+                                                         // can be done also in the loginpage  constructor!
         landingPage.enterToTheStore();
 
         HeaderPage headerPage = new HeaderPage(webDriver);
