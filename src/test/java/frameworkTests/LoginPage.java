@@ -17,6 +17,9 @@ public class LoginPage {
     @FindBy(name="signon")
     private WebElement loginButton;
 
+    @FindBy(css="ul.messages>li")
+    private WebElement failedLoginMessage;
+
     public LoginPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -37,7 +40,7 @@ public class LoginPage {
 
     public String getFailedLoginMessage(){
                                                                             // "#Content ul[class='messages'] li"
-        WebElement failedLoginMessage = webDriver.findElement(By.cssSelector("ul.messages>li"));
+//        WebElement failedLoginMessage = webDriver.findElement(By.cssSelector("ul.messages>li"));
         return failedLoginMessage.getText();
     }
 }
