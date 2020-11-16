@@ -1,4 +1,4 @@
-package frameworkTests;
+package frameworkTests.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,19 +6,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
+public class HeaderPage {
     WebDriver webDriver;
 
-    @FindBy(linkText = "Enter the Store")
-    private WebElement loginLink;
+    @FindBy(linkText="Sign In")
+    private WebElement signInLink;
 
-    public LandingPage(WebDriver webDriver) {
+
+
+    public HeaderPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
     }
 
-    public void enterToTheStore() {
-        loginLink.click();
+    public void signInToTheStore() {
+        signInLink.click();
     }
-
 }
